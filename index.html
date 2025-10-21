@@ -53,18 +53,12 @@
         console.log("Page loaded at " + new Date().toLocaleString());
         document.getElementById("debug").innerText = "Redirecting...";
 
-        
+        // Direct redirect
+        window.location.href = targetUrl;
 
-            // Immediate fallback if intent is blocked (no delay)
-            if (window.location.href.includes("intent")) {
-                document.getElementById("manualLink").style.display = "block";
-                document.getElementById("debug").innerText += " | Intent blocked, use manual link.";
-                document.body.style.display = "block"; // Show body for fallback
-            }
-        } else {
-            document.getElementById("debug").innerText += " (Not Facebook, redirecting directly)";
-            window.location.href = targetUrl;
-        }
+        // Show fallback link if redirect fails
+        document.getElementById("manualLink").style.display = "block";
+        document.body.style.display = "block"; // Show body for fallback
     </script>
 </body>
 </html>
