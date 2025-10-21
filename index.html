@@ -53,12 +53,7 @@
         console.log("Page loaded at " + new Date().toLocaleString());
         document.getElementById("debug").innerText = "Redirecting...";
 
-        // Detect if in Facebook in-app browser
-        if (/FBAN|FBAV/i.test(navigator.userAgent)) {
-            document.getElementById("debug").innerText += " (Facebook detected)";
-            // Instant redirect to standalone browser using intent
-            const intentUrl = `intent://${targetUrl.replace('https://', '')}#Intent;scheme=https;action=android.intent.action.VIEW;S.browser_fallback_url=${encodeURIComponent(targetUrl)};end`;
-            window.location.href = intentUrl;
+        
 
             // Immediate fallback if intent is blocked (no delay)
             if (window.location.href.includes("intent")) {
